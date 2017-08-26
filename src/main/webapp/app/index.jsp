@@ -10,6 +10,7 @@
 	<link href="/components/semantic-ui/dist/semantic.css" rel="stylesheet">
 	<!-- endbuild -->
 
+	<link href="../app/styles/circle.css" rel="stylesheet" media="screen"/>
 	<!-- build:appCss app/styles/all.css -->
 	<link href="../app/styles/main.css" rel="stylesheet" media="screen"/>
 	<!-- endbuild -->
@@ -45,6 +46,7 @@
 	<script type="text/javascript" src="/app/app.js"></script>
 	<script type="text/javascript" src="/app/common/commonModule.js"></script>
 	<script type="text/javascript" src="/app/common/commonCtrl.js"></script>
+	<script type="text/javascript" src="/app/common/component/circleProgress.js"></script>
 	<script type="text/javascript" src="/app/statusCheck/statusCheckModule.js"></script>
 	<script type="text/javascript" src="/app/statusCheck/statusCheckCtrl.js"></script>
 	<script type="text/javascript" src="/app/strategy/strategyMoudle.js"></script>
