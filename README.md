@@ -1,0 +1,9 @@
+# 安装方法
+## 环境依赖
+* node
+* npm
+* gulp
+* bower
+## 安装
+bower install
+npm install

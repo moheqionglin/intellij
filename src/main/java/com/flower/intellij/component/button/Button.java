@@ -1,4 +1,4 @@
-package com.flower.intellij.button;
+package com.flower.intellij.component.button;
 
 public class Button {
 

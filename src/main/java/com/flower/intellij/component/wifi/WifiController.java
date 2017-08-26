@@ -1,7 +1,7 @@
-package com.flower.intellij.wifi;
+package com.flower.intellij.component.wifi;
 
-import com.flower.intellij.button.Button;
-import com.flower.intellij.button.Status;
+import com.flower.intellij.component.button.Button;
+import com.flower.intellij.component.button.Status;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

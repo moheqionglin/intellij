@@ -1,7 +1,7 @@
-package com.flower.intellij.client;
+package com.flower.intellij.component.client;
 
-import com.flower.intellij.button.Button;
-import com.flower.intellij.button.Status;
+import com.flower.intellij.component.button.Button;
+import com.flower.intellij.component.button.Status;
 import com.tuya.smart.TuyaCloudClient;
 import com.tuya.smart.config.ClientConfig;
 import org.springframework.stereotype.Service;
