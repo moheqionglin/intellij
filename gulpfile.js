@@ -10,8 +10,6 @@ const minifyCss = require('gulp-minify-css');
 const sass = require('gulp-sass');
 const jshint = require('gulp-jshint');
 const stylish = require('jshint-stylish');
-const karma = require('gulp-karma');
-const flatten = require('gulp-flatten');
 const rev = require('gulp-rev');
 const cdnizer = require("gulp-cdnizer");
 const revReplace = require("gulp-rev-replace");
@@ -19,7 +17,6 @@ const filter = require("gulp-filter");
 const del = require('del');
 const sourcemap = require('gulp-sourcemaps');
 const gulpUtil = require('gulp-util');
-const replace = require('gulp-replace');
 const CDN = '${resourceUrl}';
 
 gulp.task('convert-sass', function () {
