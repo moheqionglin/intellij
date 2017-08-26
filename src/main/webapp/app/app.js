@@ -1,4 +1,7 @@
 'use strict';
 
 angular.module('Flower', ['ngResource', 'ngCookies', 'ngRoute',
-	'FCommon']);
+	'FCommon',
+	'FStatusCheck',
+	'FStrategy',
+	'FSwitchControl']);

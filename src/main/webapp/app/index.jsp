@@ -20,6 +20,12 @@
 </head>
 <body ng-controller="Flower.appCtrl">
 
+	<div class="ui green three item inverted labeled icon menu container">
+		<a href="#/statusCheck" class="item"><i class="treatment icon"></i> 监测 </a>
+		<a href="#/switchControl" class="item"><i class="power icon"></i> 开关 </a>
+		<a href="#/strategy" class="item"><i class="options icon"></i> 策略 </a>
+	</div>
+
 	<div class="app-content ui container">
 		<div ng-view autoScroll="true"></div>
 	</div>
@@ -37,6 +43,14 @@
 
 	<!-- build:appJs app/app-all.js -->
 	<script type="text/javascript" src="/app/app.js"></script>
+	<script type="text/javascript" src="/app/common/commonModule.js"></script>
+	<script type="text/javascript" src="/app/common/commonCtrl.js"></script>
+	<script type="text/javascript" src="/app/statusCheck/statusCheckModule.js"></script>
+	<script type="text/javascript" src="/app/statusCheck/statusCheckCtrl.js"></script>
+	<script type="text/javascript" src="/app/strategy/strategyMoudle.js"></script>
+	<script type="text/javascript" src="/app/strategy/strategyCtrl.js"></script>
+	<script type="text/javascript" src="/app/switchControl/switchControlModule.js"></script>
+	<script type="text/javascript" src="/app/switchControl/switchControlCtrl.js"></script>
 	<!-- endbuild -->
 </body>
 </html>
