@@ -22,6 +22,7 @@ const CDN = '${resourceUrl}';
 gulp.task('convert-sass', function () {
 	return gulp.src('src/main/webapp/app/sass/*.scss')
 		.pipe(sourcemap.init())
+		.pipe(sass())
 		.pipe(sourcemap.write('./'))
 		.pipe(gulp.dest('src/main/webapp/app/styles/'));
 });

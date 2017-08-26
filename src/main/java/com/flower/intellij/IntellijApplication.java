@@ -1,14 +1,15 @@
 package com.flower.intellij;
 
+import com.flower.intellij.filter.NoCacheFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-
 @SpringBootApplication
 public class IntellijApplication  extends WebMvcConfigurerAdapter {
 	//setting View resolver
@@ -30,6 +31,15 @@ public class IntellijApplication  extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/components/**").addResourceLocations("/components/");
 		registry.addResourceHandler("/bower_components/**").addResourceLocations("/bower_components/");
 		super.addResourceHandlers(registry);
+	}
+
+	@Bean
+	public FilterRegistrationBean noCacheFilter() {
+		FilterRegistrationBean bean = new FilterRegistrationBean();
+		bean.setFilter(new NoCacheFilter());
+		bean.setOrder(110);
+		bean.addUrlPatterns(new String[]{"/p/*", "/resources/*", "*.jsp"});
+		return bean;
 	}
 
 	public static void main(String[] args) {
