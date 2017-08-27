@@ -53,6 +53,10 @@
 	<script type="text/javascript" src="/app/strategy/strategyCtrl.js"></script>
 	<script type="text/javascript" src="/app/switchControl/switchControlModule.js"></script>
 	<script type="text/javascript" src="/app/switchControl/switchControlCtrl.js"></script>
+	<script type="text/javascript" src="/app/switchControl/directive/switchModalDirective.js"></script>
+	<script type="text/javascript" src="/app/strategy/detail/strategyDetailCtrl.js"></script>
+	<script type="text/javascript" src="/app/strategy/directive/strategyModalDirective.js"></script>
+
 	<!-- endbuild -->
 </body>
 </html>

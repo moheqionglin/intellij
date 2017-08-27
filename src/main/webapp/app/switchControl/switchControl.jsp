@@ -1,32 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="ui container">
-	<div class="ui card">
-		<div class="image">
-			<div class="ui blurring inverted dimmer">
-				<div class="content">
-					<div class="center">
-						<div class="ui teal button">Add Friend</div>
-					</div>
-				</div>
-			</div>
-			<img src="../assets/images/wireframe/image.png">
+	<div id="context2">
+		<div class="ui secondary menu">
+			<a class="item" data-tab="fourth">选择大棚</a>
+			<a class="item" data-tab="fifth">选择开关</a>
 		</div>
-		<div class="content">
-			<div class="header">Title</div>
-			<div class="meta">
-				<a class="group">Meta</a>
-			</div>
-			<div class="description">One or two sentence description that may go to several lines</div>
+		<div class="ui tab segment" data-tab="fourth">
+			1号大棚
 		</div>
-		<div class="extra content">
-			<a class="right floated created">Arbitrary</a>
-			<a class="friends">
-				Arbitrary</a>
+		<div class="ui active tab segment" data-tab="fifth">
+			5号开关, 6号开关
 		</div>
 	</div>
 
-	<div class="ui circular segment" style="margin-top: 10px">
-		<a>开关</a>
+	<div class="ui bottom aligned center aligned grid" style="margin-top: 100px">
+		<div class="column">
+			<button class="circular ui massive green basic icon button" style="font-size:3.71428571rem">
+				<i class="power icon"></i>
+			</button><br><br>
+			打开开关
+		</div>
 	</div>
+
+
+
 </div>
