@@ -4,4 +4,6 @@ public enum Status {
     START,
     STOP,
     BROKEN,
+    OFFLINE,
+    ONLINE,
 }

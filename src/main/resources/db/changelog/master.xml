@@ -7,15 +7,6 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 	<include file="init.xml" relativeToChangelogFile="true"/>
-	<!--<include file="update-20161016.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161018.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161023.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161024.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161025.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161030.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161106.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161110.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161119.xml" relativeToChangelogFile="true"/>-->
-	<!--<include file="update-20161121.xml" relativeToChangelogFile="true"/>-->
+	<include file="update-20170828.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
