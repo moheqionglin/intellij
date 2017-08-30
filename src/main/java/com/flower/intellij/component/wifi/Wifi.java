@@ -1,15 +1,14 @@
 package com.flower.intellij.component.wifi;
 
 import com.flower.intellij.component.button.Button;
-import com.flower.intellij.component.button.Status;
-import com.flower.intellij.component.common.Instance;
+import com.flower.intellij.component.common.BasicDomain;
 import java.util.List;
 import lombok.Data;
 
 @Data
-public class Wifi extends Instance {
+public class Wifi extends BasicDomain {
 
-    private Status status;
+    private String status;
     private List<Button> buttons;
     private String location;
 

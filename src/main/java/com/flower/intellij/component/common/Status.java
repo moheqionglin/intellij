@@ -1,4 +1,4 @@
-package com.flower.intellij.component.button;
+package com.flower.intellij.component.common;
 
 public enum Status {
     START,

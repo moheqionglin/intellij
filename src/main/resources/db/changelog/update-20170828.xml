@@ -15,4 +15,35 @@
         </createTable>
     </changeSet>
     
+    <changeSet id="add wifi time" author="flower">
+        <addColumn tableName="wifi">
+            <column name="createTime" type="timestamp"/>
+            <column name="updateTime" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    
+    <changeSet id="set time trigger" author="timestamp">
+        <sql>
+            ALTER TABLE wifi CHANGE column createTime createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+            alter table wifi change column updateTime updateTime timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+        </sql>
+    </changeSet>
+    
+    <changeSet id="add device table" author="timestamp">
+        <createTable tableName="device">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+        </createTable>
+        <addColumn tableName="device">
+            <column name="createTime" type="timestamp"/>
+            <column name="updateTime" type="timestamp"/>
+        </addColumn>
+        <sql>
+            ALTER TABLE wifi CHANGE column createTime createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+            alter table wifi change column updateTime updateTime timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+        </sql>
+    </changeSet>
+    
 </databaseChangeLog>

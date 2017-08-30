@@ -1,6 +1,6 @@
 package com.flower.intellij.component.wifi;
 
-import com.flower.intellij.component.button.Status;
+import com.flower.intellij.component.common.Status;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/wifi")
 public class WifiController {
-
+    
     @Autowired
     private WifiRepository wifiRepository;
-
-    @GetMapping(path = "/getlist")
+    
+    @GetMapping("/getlist")
     public List<Wifi> getWifiList() {
         return wifiRepository.getWifiList();
     }
-
-    @PutMapping(produces = "application/json")
+    
+    @PutMapping
     public boolean addWifi(@RequestBody Wifi wifi) {
+        wifi.setStatus(Status.OFFLINE.name());
         return wifiRepository.addWifi(wifi);
     }
-
+    
     @GetMapping
-    public Status getWifiStatus(@RequestParam Long id) {
+    public String getWifiStatus(@RequestParam Long id) {
         Wifi wifi = wifiRepository.getWifi(id);
         if (Objects.isNull(wifi)) {
             return null;
