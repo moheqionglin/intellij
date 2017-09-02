@@ -58,7 +58,7 @@
 	<div class="item">
 		<div class="middle aligned content">
 			<div class="ui right floated compact">
-				<button class="ui active green button" >
+				<button class="ui active labeled green icon button" ng-click="addStrategy()">
 					<i class="plus icon"></i>
 					新增策略
 				</button>

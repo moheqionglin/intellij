@@ -12,6 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.servlet.Filter;
+
 @SpringBootApplication
 @EnableConfigurationProperties
 public class IntellijApplication extends WebMvcConfigurerAdapter {
@@ -40,11 +42,16 @@ public class IntellijApplication extends WebMvcConfigurerAdapter {
     @Bean
     public FilterRegistrationBean noCacheFilter() {
         FilterRegistrationBean bean = new FilterRegistrationBean();
-        bean.setFilter(new NoCacheFilter());
+        bean.setFilter(noCacheFilterBean());
         bean.setOrder(110);
         bean.addUrlPatterns(new String[]{"/p/*", "/resources/*", "*.jsp"});
         return bean;
     }
+
+    @Bean
+	public Filter noCacheFilterBean(){
+		return new NoCacheFilter();
+	}
 
     public static void main(String[] args) {
         SpringApplication.run(IntellijApplication.class, args);

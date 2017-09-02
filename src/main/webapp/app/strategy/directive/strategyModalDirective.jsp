@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div>
-	<div class="ui right floated primary tiny basic button" ng-click="clickBtn()">
+	<button class="ui right floated primary tiny basic button edit-btn">
 		修改
 		<i class="edit icon"></i>
-	</div>
+	</button>
 	<div class="ui modal">
 		<i class="close icon"></i>
 		<div class="header">
