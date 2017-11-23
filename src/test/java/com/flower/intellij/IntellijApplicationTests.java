@@ -11,6 +11,7 @@ public class IntellijApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("");
 	}
 
 }

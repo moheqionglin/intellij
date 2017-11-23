@@ -1,0 +1,168 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style>
+	.ui.label {
+		margin-top: 0.5em;
+	}
+
+	.switchControl{
+		margin-top: 10px;
+		height: 80% ;
+	}
+	.ui.labeled.icon.menu .item{
+		min-width: 3.5em;
+	}
+
+</style>
+<div class="ui fluid container switchControl">
+
+		<div class="ui  grid">
+			<div class="row">
+				<div class="sixteen wide column">
+					<div class="ui items">
+						<div class="item">
+							<div class="image">
+								<img src="/images/wireframe/image.png">
+							</div>
+							<div class="content">
+								<a class="header">12 Years a Slave</a>
+								<div class="meta">
+									<span class="cinema">Union Square 14</span>
+								</div>
+								<div class="description">
+									<img src="/images/wireframe/short-paragraph.png" class="ui wireframe image">
+								</div>
+								<div class="extra">
+									<div class="ui label">IMAX</div>
+									<div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="three wide column">
+					<div class="ui inline vertical labeled icon menu" style="height: 300px; overflow: auto">
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+						<a class="green item"><i class="star icon"></i></a>
+						<a class="red item"><i class="mail icon"></i></a>
+						<a class="teal item"><i class="lab icon"></i></a>
+
+					</div>
+				</div>
+				<div class="thirteen wide column">
+					<div class="ui five column padded grid">
+						<button class="ui circular facebook icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular twitter icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular linkedin icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular facebook icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular twitter icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular linkedin icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular facebook icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular twitter icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular linkedin icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular facebook icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular twitter icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular linkedin icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+						<button class="ui circular google plus icon button column">
+							<i class="power icon"></i>
+						</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+</div>

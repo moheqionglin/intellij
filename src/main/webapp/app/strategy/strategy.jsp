@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<style>
+	.statusCheck-container{
+		margin-top: 50px;
+	}
+</style>
 <div class="ui divided items">
 	<div class="item">
 		<div class="middle aligned content">

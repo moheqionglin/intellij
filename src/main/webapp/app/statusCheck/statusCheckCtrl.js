@@ -7,4 +7,9 @@ angular.module('FStatusCheck').controller('FStatusCheck.ctrl', function ($scope,
 		$scope.value = 50;
 
 	}
+	$scope.toggleDetail = false;
+
+	$scope.toggleDetailBtn = function(){
+		$scope.toggleDetail = !$scope.toggleDetail;
+	}
 });

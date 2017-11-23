@@ -44,7 +44,7 @@ public class IntellijApplication extends WebMvcConfigurerAdapter {
         FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(noCacheFilterBean());
         bean.setOrder(110);
-        bean.addUrlPatterns(new String[]{"/p/*", "/resources/*", "*.jsp"});
+        bean.addUrlPatterns(new String[]{"*.jsp"});
         return bean;
     }
 
