@@ -29,7 +29,7 @@
 				<a href="#/strategyDetail/2">策略1-名字</a>
 			</div>
 			<div class="description">
-				<p>中午十二点打开左侧遮阳板1小时</p>
+				<p>日落前关闭所有</p>
 			</div>
 			<div class="extra">
 				<div class="ui right floated compact">
@@ -47,7 +47,7 @@
 				<a href="#/strategyDetail/3">策略1-名字</a>
 			</div>
 			<div class="description">
-				<p>中午十二点打开左侧遮阳板1小时</p>
+				<p>早上日出的时候</p>
 			</div>
 			<div class="extra">
 				<div class="ui right floated compact">

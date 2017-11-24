@@ -3,7 +3,7 @@
 <html ng-app="Flower">
 <head>
 	<!-- 检测浏览器 -->
-	<title>flower</title>
+	<title>爱尚智能大棚</title>
 	<link rel="icon" type="image/png" href="/images/favicon.png"/>
 
 	<!-- build:cssLibIndex styles/external.css -->
@@ -57,7 +57,7 @@
 	<script type="text/javascript" src="../app/switchControl/switchControlModule.js"></script>
 	<script type="text/javascript" src="../app/switchControl/switchControlCtrl.js"></script>
 	<script type="text/javascript" src="../app/switchControl/directive/switchModalDirective.js"></script>
-	<script type="text/javascript" src="../app/switchControl/history/controlHistory.js"></script>
+	<script type="text/javascript" src="../app/switchControl/shedDetail/shedDetail.js"></script>
 	<script type="text/javascript" src="../app/strategy/detail/strategyDetailCtrl.js"></script>
 
 	<!-- endbuild -->

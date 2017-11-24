@@ -8,18 +8,10 @@ angular.module('FSwitchControl', ['ngRoute']).config(function ($routeProvider) {
 		}
 	})
 	.when('/shedDetail', {
-		templateUrl: 'app/switchControl/switchControl',
+		templateUrl: 'app/switchControl/shedDetail/shedDetail',
 		controller: 'FSwitchControl.shedDetail',
 		data: {
 			standalonePage: true
 		}
 	})
-
-	// .when('/controlHistory', {
-	// 	templateUrl: 'app/switchControl/history/controlHistory',
-	// 	controller: 'FSwitchControl.controlHistory',
-	// 	data: {
-	// 		standalonePage: true
-	// 	}
-	// })
 });

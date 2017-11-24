@@ -1,49 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="ui container">
+<style>
+	.shedDetail{
+		margin-top: 10px;
+		height: 80% ;
+	}
+	.ui.cards > .card, .ui.card{
+		box-shadow: none;
+	}
+	.ui.cards > .card > .extra, .ui.card > .extra{
+		padding: 0;
+	}
+	.ui.four.cards > .card{
+		margin-left: 0.15em;
+		margin-right: 0.15em;
+    }
+    .ui.cards > .card{
+        margin: 0.475em 0.2em;
+    }
+	.ui.cards > .card > .image, .ui.card > .image{
+		padding: 0.4em 0;
+	}
 
-	<div class="ui divided items">
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>操作时间 10:30</div>
-				<div class="description">
-					<p>大棚： 1号， 开关： 2号</p>
-				</div>
+</style>
+<div class="ui fluid container shedDetail">
+	<div class="ui four cards">
+		<div class="card" ng-repeat="item in items">
+			<div class="center aligned image" >
+				<%--<img ng-src="{{item.image}}"  style="width: 50%; margin: auto">--%>
+				<a href="javascript:void(0)" ng-click="switch(item)" style="font-size: 9px"><img src="/app/images/switchControl/active.png"  ng-show="item.active" style="width: 50%; margin: auto"></a>
+				<a href="javascript:void(0)" ng-click="switch(item)" style="font-size: 9px">	<img src="/app/images/switchControl/inactive.png"  ng-hide="item.active" style="width: 50%; margin: auto"></a>
 			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>操作时间 12:30</div>
-				<div class="description">
-					<p>大棚： 1号， 2号， 开关： 2号</p>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>操作时间 16:30</div>
-				<div class="description">
-					<p>大棚： 1号， 开关： 2号, 4号</p>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>操作时间 19:30</div>
-				<div class="description">
-					<p>大棚： 1号， 开关： 2号， 3号</p>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>操作时间 22:30</div>
-				<div class="description">
-					<p>大棚： 1号，7号， 开关： 2号， 7号</p>
-				</div>
-			</div>
+			<div class="center aligned  extra">
+				<a href="javascript:void(0)" ng-click="switch(item)" style="font-size: 9px">{{item.name}}</a></div>
 		</div>
 	</div>
 
 </div>
-
