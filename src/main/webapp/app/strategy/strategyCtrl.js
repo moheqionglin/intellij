@@ -7,4 +7,17 @@ angular.module('FStrategy').controller('FStrategy.ctrl', function ($scope, $loca
 	$scope.addStrategy = function () {
 		$location.path('/strategyDetail/new');
 	}
+
+	$scope.items = [];
+	for(var i = 1; i <= 5; i++){
+		$scope.items.push({
+			id: i,
+			name: '策略' + i,
+			desc: '策略' + i,
+			switchGroup: {
+				id: i,
+				name: '开关组1'
+			}})
+	}
+
 });

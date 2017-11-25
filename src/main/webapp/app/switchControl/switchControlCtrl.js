@@ -12,14 +12,28 @@ angular.module('FSwitchControl').controller('FSwitchControl.ctrl', function ($sc
 	$('.ui.modal.switch-modal').modal('attach events', '#context2 .select-switch-btn', 'show')
 	$('.ui.basic.modal').modal('attach events', '.switch-btn', 'show')
 
-
 	$scope.items = [];
-
+	$scope.items.push({
+		id: 1,
+		type: 'GROUP',
+		image: '/app/images/switchControl/shed.jpg',
+		name: '开关组' + 1,
+		desc: '开关组' + 1})
 	for(var i = 1; i <= 20; i++){
-		$scope.items.push({image: '/app/images/switchControl/shed.jpg', name: '大棚' + i})
+		$scope.items.push({
+			id: i,
+			type: 'SHED',
+			image: '/app/images/switchControl/shed.jpg',
+			name: '大棚' + i,
+			desc: '大棚' + i})
 	}
 
-	$scope.toDetailPage = function(){
-		$location.path('/shedDetail');
+	_.each($scope.items, function(item){
+		item.typeDesc = item.type === 'SHED' ? '大棚' : '开关组';
+
+	})
+
+	$scope.toDetailPage = function(item){
+		$location.path('/shedDetail/' + item.type + '/' + item.id);
 	}
 });

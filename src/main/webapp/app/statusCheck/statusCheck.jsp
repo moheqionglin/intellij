@@ -2,13 +2,14 @@
 <style>
 	.statusCheck-container{
 		margin-top: 50px;
+		margin-bottom: 50px !important;
 	}
 	.check-btn .ui.blue.header{
 		color: #40b77d !important;
 	}
 </style>
 
-<div class="ui container statusCheck-container" >
+<div class="statusCheck-container" >
 	<div class="ui middle aligned center aligned grid">
 		<div class="column">
 			<circle-progress class="ui aligned center " last-value="value"></circle-progress>
