@@ -7,15 +7,34 @@
 	<link rel="icon" type="image/png" href="/images/favicon.png"/>
 
 	<!-- build:cssLibIndex styles/external.css -->
-	<link href="../components/semantic-ui/dist/semantic.css" rel="stylesheet">
+	<link href="../components/semantic-ui/dist/semantic.min.css" rel="stylesheet">
 	<!-- endbuild -->
 
 	<link href="../app/styles/circle.css" rel="stylesheet" media="screen"/>
 	<!-- build:appCss app/styles/all.css -->
-	<link href="../app/styles/main.css" rel="stylesheet" media="screen"/>
+	<%--<link href="../app/styles/main.css" rel="stylesheet" media="screen"/>--%>
 
 	<!-- endbuild -->
+	<style>
+		.ui.menu.fixed{
+			width: 100% !important;
+		}
+		body{
+			background-color: rgba(241, 241, 241, 0.5);
+		}
 
+		.ui.menu.item .item{
+			padding: 0.528571em 1.14285714em ;
+			font-weight: 300;
+			font-size: 11px !important;
+		}
+		.suimei-color{
+			color: #40b77d !important;
+		}
+		a{
+			color: #40b77d ;
+		}
+	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
@@ -27,7 +46,7 @@
 		<a href="#/strategy" class="item"><i class="options icon"></i> 策略 </a>
 	</div>
 
-	<div class="app-content ui container">
+	<div class="app-content ui container" style="padding-bottom: 65px;">
 		<div ng-view autoScroll="true"></div>
 	</div>
 
@@ -39,7 +58,7 @@
 	<script type="text/javascript" src="../bower_components/angular-filter/dist/angular-filter.min.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-resource/angular-resource.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
-	<script type="text/javascript" src="../components/semantic-ui/dist/semantic.js"></script>
+	<script type="text/javascript" src="../components/semantic-ui/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="../components/icalender/datePicker.js"></script>
 
 	<!-- endbuild -->

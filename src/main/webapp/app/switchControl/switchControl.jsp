@@ -4,7 +4,6 @@
 	.switch-control{
 		margin-top: 10px;
 		height: 80% ;
-		margin-bottom: 60px !important;
 	}
 	/*.ui.items > .item > .image:not(.ui){*/
 		/*width: 175px;*/
@@ -18,11 +17,6 @@
 		font-size: 0.9em;
 		font-weight: 300;
 	}
-	.nav-segment{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
 
 	.ui.segments .segment, .ui.segment{
 		display: flex;
@@ -30,18 +24,24 @@
 		justify-content: space-between;
 
 	}
-	.nav-desc{
-
+	.strategy-add-icon  {
+		cursor: pointer;
+		position: absolute;
+		top: 2rem;
+		right: 0rem;
+		margin: 0;
+		opacity: 0.5;
+		font-size: 20px;
+		color: #000000;
 	}
 
 </style>
 <div class="switch-control">
-	<%--<div class="ui clearing segment">--%>
-	<div class="nav-segment">
-		<div class="nav-desc" style="font-size: 1.5em; font-weight: 300">大棚/卡管组列表管理</div>
-		<div class="nav-icon" >
-			<a href="#/switchGroup/new"><i class="plus icon" style="font-weight: 300; color: #40b77d; font-size: 1.5em; "></i></a>
-		</div>
+	<div style="padding: 2em 0em 0em 0em;position: relative;">
+		<h4 class="ui header" style="font-size: 1.2em;">大棚/卡管组列表管理</h4>
+		<a href="#/switchGroup/new" class="strategy-add-icon">
+			<i class="plus icon" style="font-weight: 300; color: #21ba45; font-size: 1.1em; "></i>
+		</a>
 	</div>
 
 	<div class="ui divided unstackable items">
@@ -61,9 +61,7 @@
 					<%--Additional Details--%>
 				<%--</div>--%>
 			</div>
-			<div style="margin: auto; width: 35px;" ng-if="item.type === 'GROUP'">
-				<a href="#/switchGroup/{{item.id}}"><i class="write icon" style="color: #666"></i></a>
-			</div>
+
 		</div>
 	</div>
 </div>

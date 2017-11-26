@@ -3,7 +3,6 @@
 	.switchGroup{
 		margin-top: 10px;
 		height: 80% ;
-		margin-bottom: 60px !important;
 	}
 </style>
 <div class="switchGroup">

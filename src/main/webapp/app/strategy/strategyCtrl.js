@@ -4,9 +4,6 @@
 'use strict';
 angular.module('FStrategy').controller('FStrategy.ctrl', function ($scope, $location) {
 
-	$scope.addStrategy = function () {
-		$location.path('/strategyDetail/new');
-	}
 
 	$scope.items = [];
 	for(var i = 1; i <= 5; i++){

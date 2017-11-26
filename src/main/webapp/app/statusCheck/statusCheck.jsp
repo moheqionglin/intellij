@@ -2,7 +2,6 @@
 <style>
 	.statusCheck-container{
 		margin-top: 50px;
-		margin-bottom: 50px !important;
 	}
 	.check-btn .ui.blue.header{
 		color: #40b77d !important;

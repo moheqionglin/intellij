@@ -1,6 +1,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="ui container">
+<style>
+	.strategyDetail{
+		margin-top: 10px;
+		height: 80% ;
+	}
+	.ui.items > .item > .content > .header{
+		font-size: 1.1em !important;
+		font-weight: 500 !important;
+		color: #000;
+	}
+	.ui.items > .item .meta{
+		font-size: 0.9em;
+		font-weight: 300;
+	}
+	.nav-segment{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+</style>
+<div class="strategyDetail">
 
 	<div class="ui divided items">
 		<div class="item">

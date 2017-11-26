@@ -3,7 +3,6 @@
 	.strategy{
 		margin-top: 10px;
 		height: 80% ;
-		margin-bottom: 60px !important;
 	}
 	.ui.items > .item > .content > .header{
 		font-size: 1.1em !important;
@@ -14,44 +13,43 @@
 		font-size: 0.9em;
 		font-weight: 300;
 	}
-	.nav-segment{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
 
+	.strategy-add-icon  {
+		cursor: pointer;
+		position: absolute;
+		top: 2rem;
+		right: 0rem;
+		margin: 0;
+		opacity: 0.5;
+		font-size: 20px;
+		color: #000000;
+	}
 </style>
 <div class="strategy">
-	<div class="nav-segment">
-		<div class="nav-desc" style="font-size: 1.5em; font-weight: 300">策略管理</div>
-		<div class="nav-icon" >
-			<a href="#/strategyDetail/new"><i class="plus icon" style="font-weight: 300; color: #40b77d; font-size: 1.5em; "></i></a>
-		</div>
+	<div style="padding: 2em 0em 0em 0em;position: relative;">
+		<h4 class="ui header" style="font-size: 1.2em;">策略管理</h4>
+		<a href="#/strategyDetail/new" class="strategy-add-icon">
+			<i class="plus icon" style="font-weight: 300; color: #21ba45; font-size: 1.1em; "></i>
+		</a>
 	</div>
 
 	<div class="ui unstackable items">
 		<div class="item" ng-repeat="item in items" style="border-radius: 0.9em; background-color: #fff">
-			<div class="middle aligned image" >
-				<div class="middle aligne  " style="border: solid 1px #f1f1f1; width: 60px; height: 60px; border-radius: 0.5em; margin:7% 25% ">
+			<div class="middle aligned image"  style="padding: 5px 25px">
+				<div class="middle aligne  " style="border: solid 1px #f1f1f1; width: 60px; height: 60px; border-radius: 0.5em;  ">
 					<%--<img ng-src="{{item.image}}"  style="width: 50%; margin: auto">--%>
-					<a href="javascript:void(0)" ng-click="switch(item)"  ><img src="/app/images/strategy/strategy.png"  style="width: 70%; margin: 13% 13%; "></a>
+					<a href="#/strategyDetail/{{item.id}}" ><img src="/app/images/strategy/strategy.png"  style="width: 70%; margin: 13% 13%; "></a>
 				</div>
 			</div>
 
 			<div class="middle aligned content">
-				{{item.name}}
+				<a href="#/strategyDetail/{{item.id}}" >{{item.name}}</a>
+					<div class="ui fitted toggle checkbox" style="float:right;" ng-click="editSwitch(item)">
+						<input type="checkbox">
+						<label></label>
+					</div>
 				<div class="meta">
 					<span>{{item.desc}}&nbsp;&nbsp;|&nbsp;&nbsp;{{item.switchGroup.name}}</span>
-				</div>
-			</div>
-			<div style="margin: auto; width: 35px;" ng-click="editSwitch(item)">
-				<div class="extra">
-					<div class="ui right floated compact">
-						<div class="ui fitted toggle checkbox">
-							<input type="checkbox">
-							<label></label>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
