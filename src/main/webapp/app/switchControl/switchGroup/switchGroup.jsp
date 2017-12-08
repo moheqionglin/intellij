@@ -4,56 +4,53 @@
 		margin-top: 10px;
 		height: 80% ;
 	}
+
+	.ui.menu .item{
+		position: static;
+	}
 </style>
 <div class="switchGroup">
+	<div class="ui container">
+		<div class="introduction">
 
-	<div class="ui divided items">
-		<div class="item">
+			<h1 class="ui header" style="font-size: 18px;">
+				按钮组管理
+				<div class="sub header">
+					按钮组可以更加方便地管理一组功能相近的按钮。
+				</div>
+			</h1>
+
+			<div class="ui right floated  green button">保存</div>
+			<button class="ui floating grey basic button">取消</button>
+
+		</div>
+
+	</div>
+	<div class="ui items">
+		<div class="item" style="border-radius: 0.9em; background-color: #fff; padding: 1em">
+			<div class="middle aligned content"  >
+				<div class="ui labeled input">
+					<div class="ui label">
+						组名字
+					</div>
+					<input type="text" value="$52.03" style="border: none;">
+				</div>
+			</div>
+		</div>
+		<span>已选中的0个设备</span>
+		<div class="item" style="border-radius: 0.9em; background-color: #fff; padding: 1em">
 			<div class="middle aligned content">
-				<div class="header"><i class="id badge icon"></i>未命名开关组-1</div>
-				<div class="description">
-					<p>策略1</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn switch-group-btn">
-						修改
-						<i class="edit icon"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="id badge icon"></i>开关列表</div>
-				<div class="description">
-					<p>请添加开关列表</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn add-switch-btn">
-						添加
-						<i class="plus icon"></i>
-					</button>
+				<div class="ui styled fluid accordion">
+					<div class="title" ng-repeat="shed in sheds"><i class="dropdown icon"></i>
+						{{shed.name}}
+					</div>
+					<div class="content" ng-repeat="switch in switchs">
+						<p class="transition hidden">
+							{{switch.name}}
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="ui middle aligned divided list">
-			<div class="item">
-				<div class="right floated content">
-					<div class="ui button">删除</div>
-				</div>
-				<i class="id badge icon"></i>
-				<div class="content">
-					[大棚1] &nbsp;&nbsp;开关1
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="ui two bottom attached buttons">
-				 <button class="ui button"><i class="trash outline icon"></i>删除策略</button>
-				<button class="ui positive button"><i class="add square icon"></i>保存策略</button>
-			</div>
-
 		</div>
 	</div>
 

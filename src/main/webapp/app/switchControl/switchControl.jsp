@@ -39,7 +39,7 @@
 <div class="switch-control">
 	<div style="padding: 2em 0em 0em 0em;position: relative;">
 		<h4 class="ui header" style="font-size: 1.2em;">大棚/卡管组列表管理</h4>
-		<a href="#/switchGroup/new" class="strategy-add-icon">
+		<a href="#/switchGroup/new" class="strategy-add-icon" >
 			<i class="plus icon" style="font-weight: 300; color: #21ba45; font-size: 1.1em; "></i>
 		</a>
 	</div>

@@ -3,7 +3,23 @@
  */
 'use strict';
 angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope) {
-	$('.strategy-name-modal').modal('attach events', '.switch-group-btn', 'show');
-	$('.strategy-repeat-modal').modal('attach events', '.add-switch-btn', 'show')
-	$('.ui.checkbox').checkbox();
+	$('.ui.accordion').accordion();
+	$scope.sheds = [];
+	$scope.switchs = [];
+
+	for(var i = 1 ; i <= 50; i ++){
+		$scope.sheds.push({
+			id: i,
+			name: '大棚' + i,
+
+		})
+	}
+
+	for(var i = 1 ; i <= 20; i ++){
+		$scope.switchs.push({
+			id: i,
+			name: '开关' + i,
+			desc: '开关' + i
+		})
+	}
 });

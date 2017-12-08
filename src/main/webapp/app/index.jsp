@@ -75,6 +75,8 @@
 	<script type="text/javascript" src="../app/strategy/strategyCtrl.js"></script>
 	<script type="text/javascript" src="../app/switchControl/switchControlModule.js"></script>
 	<script type="text/javascript" src="../app/switchControl/switchControlCtrl.js"></script>
+	<script type="text/javascript" src="../app/switchControl/switchGroup/switchGroup.js"></script>
+
 	<script type="text/javascript" src="../app/switchControl/directive/switchModalDirective.js"></script>
 	<script type="text/javascript" src="../app/switchControl/shedDetail/shedDetail.js"></script>
 	<script type="text/javascript" src="../app/strategy/detail/strategyDetailCtrl.js"></script>
