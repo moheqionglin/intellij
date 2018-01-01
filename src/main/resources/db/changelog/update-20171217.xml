@@ -1,0 +1,105 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="alter table utf8" author="intellij" dbms="mysql">
+		<sql>
+			create database if not exists flower_intellij;
+			ALTER DATABASE flower_intellij CHARACTER SET utf8 COLLATE utf8_general_ci;
+		</sql>
+	</changeSet>
+
+    <changeSet id="add users" author="intellij">
+        <createTable tableName="users">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="dingding_id" type="varchar(100)"/>
+			<column name="createdAt" type="timestamp"/>
+			<column name="updatedAt" type="timestamp"/>
+			<column name="version" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+        </createTable>
+    </changeSet>
+	<changeSet id="add sheds" author="intellij">
+		<!-- 大棚 -->
+		<createTable tableName="sheds">
+			<column name="id" autoIncrement="true" type="bigint">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="name" type="varchar(100)"/>
+			<column name="createdAt" type="timestamp"/>
+			<column name="updatedAt" type="timestamp"/>
+			<column name="version" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="add shed user mapping" author="intellij">
+		<createTable tableName="sheds_user_mapping">
+			<column name="user_id" type="bigint"/>
+			<column name="shed_id" type="bigint"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="add switches" author="intellij">
+		<!-- 开关 -->
+		<createTable tableName="switches">
+			<column name="id" autoIncrement="true" type="bigint">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="name" type="varchar(100)"/>
+			<column name="status" type="varchar(20)"/>
+			<column name="shed_id" type="bigint" />
+			<column name="location" type="varchar(500)"/>
+			<column name="createdAt" type="timestamp"/>
+			<column name="updatedAt" type="timestamp"/>
+			<column name="version" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="add switch_groups" author="intellij">
+		<!-- 开关组 -->
+		<createTable tableName="switch_groups">
+			<column name="id" autoIncrement="true" type="bigint">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="user_id" type="bigint" />
+			<column name="name" type="varchar(100)"/>
+			<column name="createdAt" type="timestamp"/>
+			<column name="updatedAt" type="timestamp"/>
+			<column name="version" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="add group_switch_mapping" author="intellij">
+		<!-- 开关 和 开关组多对 多关系表 -->
+		<createTable tableName="group_switch_mapping">
+			<column name="switch_id" type="bigint" />
+			<column name="switch_group_id" type="bigint" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="add strategy" author="intellij">
+		<!-- 开关 和 开关组多对 多关系表 -->
+		<createTable tableName="strategy">
+			<column name="id" autoIncrement="true" type="bigint">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="user_id" type="bigint"/>
+			<column name="name" type="varchar(100)"/>
+			<column name="createdAt" type="timestamp"/>
+			<column name="updatedAt" type="timestamp"/>
+			<column name="version" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>

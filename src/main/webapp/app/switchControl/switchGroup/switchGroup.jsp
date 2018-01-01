@@ -20,8 +20,8 @@
 				</div>
 			</h1>
 
-			<div class="ui right floated  green button">保存</div>
-			<button class="ui floating grey basic button">取消</button>
+			<button class="ui right floated  green button" >保存</button>
+			<button class="ui floating grey basic button" ng-click="returnSwitchControl()">取消</button>
 
 		</div>
 
@@ -33,7 +33,7 @@
 					<div class="ui label">
 						组名字
 					</div>
-					<input type="text" value="$52.03" style="border: none;">
+					<input type="text" value="" style="border: none;">
 				</div>
 			</div>
 		</div>
@@ -41,91 +41,22 @@
 		<div class="item" style="border-radius: 0.9em; background-color: #fff; padding: 1em">
 			<div class="middle aligned content">
 				<div class="ui styled fluid accordion">
-					<div class="title" ng-repeat="shed in sheds"><i class="dropdown icon"></i>
-						{{shed.name}}
+					<div ng-repeat="shed in sheds">
+						<div class="title" ><i class="dropdown icon"></i>
+							{{shed.name}}
+						</div>
+						<div class="content test">
+							<%--<p class="transition hidden" ng-repeat="switch in shed.switch">--%>
+							<div class="ui checkbox" ng-repeat="switch in shed.switch" ng-click="selectSwitch(switch)">
+								<input type="checkbox" ng-checked="switch.selected">
+								<label>{{switch.name}}</label>
+							</div>
+						</div>
 					</div>
-					<div class="content" ng-repeat="switch in switchs">
-						<p class="transition hidden">
-							{{switch.name}}
-						</p>
-					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-</div>
-
-<div class="ui modal strategy-name-modal">
-	<i class="close icon"></i>
-	<div class="header">
-		输入策略名称
-	</div>
-	<div class="ui content input">
-		<input type="text" placeholder="策略名--改成anglar">
-	</div>
-	<div class="actions">
-		<div class="ui button">Cancel</div>
-		<div class="ui positive button">OK</div>
-	</div>
-</div>
-
-
-<div class="ui modal strategy-repeat-modal">
-	<i class="close icon"></i>
-	<div class="header">
-		重复
-	</div>
-	<div class="content">
-		<div class="ui form">
-			<div class="ui relaxed divided list">
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周一</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周二</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周三</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周四</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周五</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周六</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周日</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="actions">
-		<div class="ui button">Cancel</div>
-		<div class="ui positive button">OK</div>
-	</div>
 </div>

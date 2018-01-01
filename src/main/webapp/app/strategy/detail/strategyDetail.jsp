@@ -21,8 +21,37 @@
 
 </style>
 <div class="strategyDetail">
+	<div class="ui container">
+		<div class="introduction">
 
+			<h1 class="ui header" style="font-size: 18px;">
+				策略管理
+				<div class="sub header">
+					自定义策略可以更方便的管理您的设备。
+				</div>
+			</h1>
+
+			<button class="ui right floated  green button" >保存</button>
+			<button class="ui floating grey basic button" ng-click="returnSwitchControl()">取消</button>
+
+		</div>
+
+	</div>
 	<div class="ui divided items">
+		<div class="item">
+			<div class="middle aligned content">
+				<div class="header"><i class="grid layout icon"></i>选择开关组</div>
+				<div class="description">
+					<p>开关组1</p>
+				</div>
+				<div class="extra">
+					<button class="ui right floated primary tiny basic button edit-btn strategy-switch-group-btn">
+						修改
+						<i class="edit icon"></i>
+					</button>
+				</div>
+			</div>
+		</div>
 		<div class="item">
 			<div class="middle aligned content">
 				<div class="header"><i class="wait icon"></i>开始时间</div>
@@ -55,7 +84,7 @@
 			<div class="middle aligned content">
 				<div class="header"><i class="repeat icon"></i> 重复</div>
 				<div class="description">
-					<p>周一， 周二</p>
+					<p>24小时</p>
 				</div>
 				<div class="extra">
 					<button class="ui right floated primary tiny basic button edit-btn strategy-repeat-btn">
@@ -93,17 +122,28 @@
 				</div>
 			</div>
 		</div>
-		<div class="item">
-			<div class="ui two bottom attached buttons">
-				 <button class="ui button"><i class="trash outline icon"></i>删除策略</button>
-				<button class="ui positive button"><i class="add square icon"></i>保存策略</button>
-			</div>
-
-		</div>
 	</div>
 
 </div>
 
+<div class="ui modal strategy-switch-group-modal">
+	<i class="close icon"></i>
+	<div class="header">
+		请选择开关组
+	</div>
+	<div class="ui content input">
+
+		<button class="ui green button"
+				ng-repeat="switchGroup in switchGroups"
+				ng-class="{'basic': !switchGroup.selected}"
+				ng-click="selectSwitchGroup(switchGroup)">{{switchGroup.name}}</button>
+
+	</div>
+	<div class="actions">
+		<div class="ui button">Cancel</div>
+		<div class="ui positive button">OK</div>
+	</div>
+</div>
 <div class="ui modal strategy-name-modal">
 	<i class="close icon"></i>
 	<div class="header">
@@ -140,55 +180,11 @@
 <div class="ui modal strategy-repeat-modal">
 	<i class="close icon"></i>
 	<div class="header">
-		重复
+		重复间隔
 	</div>
-	<div class="content">
-		<div class="ui form">
-			<div class="ui relaxed divided list">
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周一</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周二</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周三</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周四</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周五</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周六</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-				<div class="item">
-					<div class="ui content checkbox">
-						<label>周日</label>
-						<input type="checkbox" tabindex="0" class="hidden">
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="ui content input">
+		<input type="text" placeholder="24">
+		<label>小时</label>
 	</div>
 	<div class="actions">
 		<div class="ui button">Cancel</div>
