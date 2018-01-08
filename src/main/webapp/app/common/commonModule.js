@@ -1,8 +1,8 @@
 'use strict';
 angular.module('FCommon', ['ngRoute']).config(function ($routeProvider) {
 	$routeProvider.when('/', {
-		redirectTo: '/statusCheck'
+		redirectTo: '/login'
 	}).otherwise({
-		redirectTo: '/statusCheck'
+		redirectTo: '/login'
 	});
 });

@@ -121,7 +121,7 @@ public class AuthHelper {
         String queryStringEncode = null;
         String url;
 
-        if(urlString.contains("app/index.jsp")){
+        if(urlString.contains("app/login/login.jsp")){
 			urlString = "http://106.14.133.77:8888/p/";
 		}
 
