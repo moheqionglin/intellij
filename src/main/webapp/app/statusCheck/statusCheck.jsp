@@ -9,6 +9,7 @@
 </style>
 
 <div class="statusCheck-container" >
+	<div class="ui aligned center"><span>{{userid}}</span></div>
 	<div class="ui middle aligned center aligned grid">
 		<div class="column">
 			<circle-progress class="ui aligned center " last-value="value"></circle-progress>

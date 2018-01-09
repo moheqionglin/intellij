@@ -8,6 +8,12 @@ angular.module('FSLogin').controller('FSLoginControl.ctrl', function ($scope, $l
 	 */
 	$rootScope.showNav = false;
 	$scope.error = false;
+	var cookieUserId = $cookies.get('userid');
+	if(!cookieUserId){
+		$window.location.href = '/p/#/statusCheck';
+		return;
+	}
+
 	dd.config({
 		agentId: _config.agentid,
 		corpId: _config.corpId,
@@ -52,8 +58,6 @@ angular.module('FSLogin').controller('FSLoginControl.ctrl', function ($scope, $l
 						$cookies.put('userid', data.userid, {
 							expires: exp
 						});
-
-						var cookie = $cookies.get('userid');
 
 						$window.location.href = '/p/#/statusCheck';
 						return;
