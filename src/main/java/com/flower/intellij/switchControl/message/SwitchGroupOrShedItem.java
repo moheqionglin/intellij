@@ -24,7 +24,7 @@ public class SwitchGroupOrShedItem {
 	public SwitchGroupOrShedItem(SwitchGroups grp) {
 		this.id = grp.getId();
 		this.name = grp.getName();
-		this.type = SwitchControllerType.SHED;
+		this.type = SwitchControllerType.GROUP;
 	}
 	public SwitchGroupOrShedItem(Integer id, SwitchControllerType type, String name) {
 		this.id = id;

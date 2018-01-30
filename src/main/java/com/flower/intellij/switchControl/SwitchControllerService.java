@@ -6,6 +6,7 @@ import com.flower.intellij.switchControl.message.*;
 import com.tuya.smart.TuyaCloudClient;
 import com.tuya.smart.model.RequestMessage;
 import com.tuya.smart.model.ResponseMessage;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +141,34 @@ public class SwitchControllerService {
 		Switch s = em.createQuery("SELECT s FROM Switch s WHERE s.id = :id", Switch.class)
 			.setParameter("id", id).getSingleResult();
 		s.setName(name);
+		return true;
+	}
+
+	public Object getAllSwitchs(String userid) {
+		User u = em.createQuery("SELECT u FROM com.flower.intellij.domain.User u where u.dingDingId = :userid", User.class)
+			.setParameter("userid", userid).getSingleResult();
+		AllSwitchsRsp rsp = new AllSwitchsRsp();
+
+
+		rsp.getItems().addAll(u.getSheds().stream().map(ShedItem::new).collect(Collectors.toList()));
+		return rsp;
+
+
+
+	}
+
+	@Transactional
+	public boolean createSwitchGroup(String userid, CreateSwitchGroupRequest req) {
+		User u = em.createQuery("SELECT u FROM com.flower.intellij.domain.User u where u.dingDingId = :userid", User.class)
+			.setParameter("userid", userid).getSingleResult();
+
+		List<Switch> ss = em.createQuery("SELECT s FROM Switch s WHERE s.id IN (:ids)")
+			.setParameter("ids", req.getSwitchs().stream().map(swi -> swi.getId()).collect(Collectors.toList())).getResultList();
+		SwitchGroups sgp = new SwitchGroups();
+		sgp.setUser(u);
+		sgp.setName(StringUtils.substring(req.getName(), 0, 99));
+		sgp.setSwitchs(ss);
+		em.persist(sgp);
 		return true;
 	}
 }

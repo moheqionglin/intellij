@@ -1,15 +1,15 @@
 package com.flower.intellij.switchControl;
 
 import com.flower.intellij.domain.SwitchStatus;
+import com.flower.intellij.switchControl.message.CreateSwitchGroupRequest;
 import com.flower.intellij.switchControl.message.ShedOrGroupDetailRsp;
 import com.flower.intellij.switchControl.message.SwitchControllerResponse;
 import com.flower.intellij.switchControl.message.SwitchControllerType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author wanli zhou
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/resources/switchController")
 public class SwitchController {
+
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private SwitchControllerService switchControllerService;
@@ -44,5 +46,17 @@ public class SwitchController {
 	public ResponseEntity renameForSwitch(@PathVariable("id") Integer id, @PathVariable("name") String name){
 
 		return ResponseEntity.ok(switchControllerService.renameForSwitch(id, name));
+	}
+
+	@GetMapping(path = "/all/switchs/{userid}")
+	public ResponseEntity getAllSwitchs(@PathVariable("userid") String userid){
+		return ResponseEntity.ok(switchControllerService.getAllSwitchs(userid));
+
+	}
+
+	@PostMapping(path = "/switchGroup/{userid}")
+	public ResponseEntity createSwitchGroup(@PathVariable("userid") String userid, @RequestBody CreateSwitchGroupRequest req){
+		log.info("USER : {} Create Switch Group {}", userid, req);
+		return ResponseEntity.ok(switchControllerService.createSwitchGroup(userid, req));
 	}
 }

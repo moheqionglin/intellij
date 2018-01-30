@@ -2,39 +2,50 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope, $location) {
+angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope, $location, $cookies, $http) {
 	$('.ui.accordion').accordion();
+	$scope.userid = $cookies.get('userid') || '04182642161821818175';
 	$scope.sheds = [];
+	$scope.totalSelected = 0;
+	$scope.req = {};
 
-	var k = 1;
+	$http.get('../resources/switchController/all/switchs/' + $scope.userid).then(function (data) {
+		$scope.sheds = data.data.items;
+	}, function () {
 
-	for(var i = 1 ; i <= 50; i ++){
-		var s = {
-			id: i,
-			name: '大棚' + i,
-			switch: []
-		};
-		console.log('---')
-		for(var j = 1 ; j <= 20; j ++){
-			s.switch.push({
-				id: k,
-				name: '开关' + k,
-				desc: '开关' + k++,
-				selected : false
+	});
 
-			});
-		}
-		$scope.sheds.push(s);
-
-	}
 
 	$scope.selectSwitch = function (s) {
 		s.selected = !s.selected
+		if(s.selected){
+			$scope.totalSelected += 1;
+		}else{
+			$scope.totalSelected -= 1;
+		}
 
 	}
 
 	$scope.returnSwitchControl = function(){
 		$location.path('/switchControl')
+	}
+
+	$scope.save = function () {
+		$scope.req.switchs = [];
+		_.each($scope.sheds, function (shed) {
+			_.each(shed.switchs, function(sw){
+				if(sw.selected){
+					$scope.req.switchs.push({id: sw.id});
+				}
+			});
+
+		});
+		$http.post('../resources/switchController/switchGroup/' + $scope.userid, $scope.req).then(function (data) {
+
+		},function(){
+
+		});
+		console.log($scope.req);
 	}
 
 

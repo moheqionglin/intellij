@@ -20,7 +20,7 @@
 				</div>
 			</h1>
 
-			<button class="ui right floated  green button" >保存</button>
+			<button class="ui right floated  green button"  ng-click="save()" ng-disabled = "!req.name || totalSelected <= 0">保存</button>
 			<button class="ui floating grey basic button" ng-click="returnSwitchControl()">取消</button>
 
 		</div>
@@ -29,15 +29,15 @@
 	<div class="ui items">
 		<div class="item" style="border-radius: 0.9em; background-color: #fff; padding: 1em">
 			<div class="middle aligned content"  >
-				<div class="ui labeled input">
+				<div class="ui labeled input" style="width: 80%;" >
 					<div class="ui label">
 						组名字
 					</div>
-					<input type="text" value="" style="border: none;">
+					<input type="text" value="" style="border: none;" ng-model="req.name">
 				</div>
 			</div>
 		</div>
-		<span>已选中的0个设备</span>
+		<span>已选中的{{totalSelected}}个设备</span>
 		<div class="item" style="border-radius: 0.9em; background-color: #fff; padding: 1em">
 			<div class="middle aligned content">
 				<div class="ui styled fluid accordion">
@@ -47,7 +47,7 @@
 						</div>
 						<div class="content test">
 							<%--<p class="transition hidden" ng-repeat="switch in shed.switch">--%>
-							<div class="ui checkbox" ng-repeat="switch in shed.switch" ng-click="selectSwitch(switch)">
+							<div class="ui checkbox" ng-repeat="switch in shed.switchs" ng-click="selectSwitch(switch)">
 								<input type="checkbox" ng-checked="switch.selected">
 								<label>{{switch.name}}</label>
 							</div>
