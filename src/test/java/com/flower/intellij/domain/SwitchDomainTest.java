@@ -29,7 +29,7 @@ public class SwitchDomainTest extends BaseTest{
 		assertEquals(sd.getName(), SHED_NAME);
 
 		Switch sws = new Switch();
-		sws.setLocation("shed 1");
+		sws.setLocation(1);
 		sws.setName("水控");
 		sws.setShed(sd);
 		sd.getSwitchs().add(sws);

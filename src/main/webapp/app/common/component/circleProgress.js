@@ -16,31 +16,53 @@ angular.module('FCommon').directive('circleProgress', function ($interval) {
 		link: function (scope, tElem) {
 			scope.value = 0;
 
-			var setValue = function (lv) {
-
-				var setValueProgress = $interval(function () {
-					scope.display = scope.value + '分';
-					scope.value += 10;
-					if (scope.value === lv) {
-						$interval.cancel(setValueProgress);
+			var loadProgress = function(lv){
+				var progressBar = 0;
+				scope.value = scope.display = 0;
+				var progress = $interval(function () {
+					scope.display = progressBar + '%';
+					scope.value = progressBar;
+					progressBar += 5;
+					if(progressBar === 100){
+						progressBar = 0;
+						$interval.cancel(progress);
+						if(lv){
+							setValue(lv);
+						}
 					}
-
+				}, 100);
+			}
+			var loading = function(){
+				var progressBar = 0;
+				scope.value = scope.display = 0;
+				var progress = $interval(function () {
+					scope.display = progressBar + '%';
+					scope.value = progressBar;
+					progressBar += 5;
+					if(progressBar === 100){
+						progressBar = 0;
+						$interval.cancel(progress);
+						if(lv){
+							setValue(lv);
+						}
+					}
 				}, 100);
 			}
 
-			var progress = $interval(function () {
-				scope.display = scope.value + '%';
-				scope.value += 5;
-				if(scope.value === 120){
-					scope.value = 0;
-					$interval.cancel(progress);
-					setValue(90);
-				}
+			var setValue = function (lv) {
+				scope.value = scope.display = 0;
+				var setValueProgress = $interval(function () {
+					scope.value += 5;
+					if ((scope.value + 5) >= lv) {
+						$interval.cancel(setValueProgress);
+					}
+					scope.display = lv + '分';
+					console.log('===>' + scope.display);
+				}, 100);
+			}
 
-				if(scope.lastValue){
-					$interval.cancel(progress);
-					setValue(scope.lastValue);
-				}}, 100);
+			loadProgress(scope.lastValue);
+
 		}
 	};
 })

@@ -40,7 +40,7 @@
 	<meta name="keywords" content=""/>
 </head>
 <body ng-controller="Flower.appCtrl">
-	<div ng-show = "showNav" class="ui green three item inverted labeled icon bottom fixed menu container">
+	<div ng-hide = "!showNav && loginPage" class="ui green three item inverted labeled icon bottom fixed menu container">
 		<a href="#/statusCheck" class="item"><i class="treatment icon"></i> 监测 </a>
 		<a href="#/switchControl" class="item"><i class="power icon"></i> 开关 </a>
 		<a href="#/strategy" class="item"><i class="options icon"></i> 策略 </a>

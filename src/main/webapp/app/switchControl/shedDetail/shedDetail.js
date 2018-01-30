@@ -2,20 +2,17 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FSwitchControl').controller('FSwitchControl.shedDetail', function ($scope) {
-	$scope.items = [];
-	for(var i = 1; i <= 20; i++){
-		$scope.items.push({
-			id: i,
-			image: i % 4 == 0? '/app/images/switchControl/active.png' : '/app/images/switchControl/inactive.png',
-			name: '开关' + i,
-			shed: i,
-			active: (i % 4 == 0),
-			edit: false})
-	}
+angular.module('FSwitchControl').controller('FSwitchControl.shedDetail', function ($scope, switchItems, $http) {
+	$scope.items = switchItems;
 
 	$scope.switch = function (item) {
-		item.active = !item.active;
+		var status = item.active ? 'CLOSE' : 'OPEN';
+		$http.get('../resources/switchController/switch/' + item.id + '/status/' +  status).then(function(data){
+			item.active = !item.active;
+		}, function(data){
+
+		});
+
 	}
 
 	$scope.editSwitch = function(item){
@@ -24,6 +21,8 @@ angular.module('FSwitchControl').controller('FSwitchControl.shedDetail', functio
 
 	$scope.saveSwitch = function (item) {
 		item.edit = false;
+		$http.get('../resources/switchController/switch/' + item.id + '/rename/' + item.name)
+			.then(function(){}, function(){});
 	}
 
 

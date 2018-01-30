@@ -1,9 +1,8 @@
 package com.flower.intellij.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wanli zhou
@@ -17,6 +16,20 @@ public class SwitchGroups extends BasePersistable{
 	private User user;
 
 	private String name;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "group_switch_mapping",
+		joinColumns = @JoinColumn(name = "switch_id"),
+		inverseJoinColumns = @JoinColumn(name = "switch_group_id"))
+	private List<Switch> switchs = new ArrayList<>();
+
+	public List<Switch> getSwitchs() {
+		return switchs;
+	}
+
+	public void setSwitchs(List<Switch> switchs) {
+		this.switchs = switchs;
+	}
 
 	public User getUser() {
 		return user;

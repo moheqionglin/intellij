@@ -6,6 +6,7 @@ angular.module('FSLogin').controller('FSLoginControl.ctrl', function ($scope, $l
 	/**
 	 * _config comes from server-side template. see views/index.jade
 	 */
+	$rootScope.loginPage = true;
 	$rootScope.showNav = false;
 	$scope.error = false;
 	var cookieUserId = $cookies.get('userid');

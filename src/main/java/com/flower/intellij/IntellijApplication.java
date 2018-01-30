@@ -1,6 +1,8 @@
 package com.flower.intellij;
 
 import com.flower.intellij.filter.NoCacheFilter;
+import com.tuya.smart.TuyaCloudClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -18,6 +20,12 @@ import javax.servlet.Filter;
 @EnableConfigurationProperties
 public class IntellijApplication extends WebMvcConfigurerAdapter {
     //setting View resolver
+	private static final String END_URI = "https://a1.tuyacn.com/api.json";// 调用中国区的API（您可换成其他可用区）
+
+	@Value("${t.a.i}")
+	private String accessId;
+	@Value("${t.a.k}")
+	private String accessKey;
 
     @Bean
     public ViewResolver getViewResolver() {
@@ -51,6 +59,11 @@ public class IntellijApplication extends WebMvcConfigurerAdapter {
     @Bean
 	public Filter noCacheFilterBean(){
 		return new NoCacheFilter();
+	}
+
+	@Bean
+	public TuyaCloudClient tuyaCloudClient(){
+		return new TuyaCloudClient(accessId, accessKey, END_URI);
 	}
 
     public static void main(String[] args) {

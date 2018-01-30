@@ -13,14 +13,22 @@ angular.module('FSwitchControl', ['ngRoute']).config(function ($routeProvider) {
 		data: {
 			standalonePage: true
 		},
+
 		resolve: {
-			switchItems: ['$route', '$location', '$q', function ($route, $location, $q) {
-				// return ProductService.getProductDetailsBySupplierId($route.current.params.name, $route.current.params.supplierId).then(function (product) {
-				// 	return $q.resolve(product);
-				// }, function () {
-				// 	$location.path('/');
-				// });
-			}]
+			switchItems: ['$location', '$http', '$route', '$q',
+				function ($location, $http, $route, $q) {
+					var type =  $route.current.params.type;
+					var id = $route.current.params.shedId
+					var def = $q.defer();
+					$http.get('../resources/switchController/' + type + '/' + id)
+						.success(function (data) {
+							def.resolve(data.items);
+						})
+						.error(function () {
+							$location.path('/');
+						});
+					return def.promise;
+				}]
 		}
 	})
 	.when('/switchGroup/:id', {

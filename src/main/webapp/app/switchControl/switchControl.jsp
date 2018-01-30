@@ -52,14 +52,9 @@
 			<div class="middle aligned content">
 				<a class="header" href="#/shedDetail/{{item.type}}/{{item.id}}">{{item.name}}</a>
 				<div class="meta">
-					<span>[{{item.typeDesc}}]&nbsp;{{item.desc}}</span>
+					<span ng-if = "item.type === 'SHED'">[大棚] </span>
+					<span ng-if = "item.type === 'GROUP'">[开关组] </span>
 				</div>
-				<%--<div class="description">--%>
-					<%--<p></p>--%>
-				<%--</div>--%>
-				<%--<div class="extra">--%>
-					<%--Additional Details--%>
-				<%--</div>--%>
 			</div>
 
 		</div>

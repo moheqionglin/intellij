@@ -30,7 +30,7 @@
 				<input ng-show="item.edit" style="width: 90%" class="switch-input" id="switch-{{item.id}}" ng-model="item.name" ng-blur="saveSwitch(item)">
 				<i class="write icon" style="color: #666; float:right;" ng-click="editSwitch(item)"></i>
 				<div class="meta">
-					<span>[大棚{{item.shed}}]&nbsp;{{item.desc}}</span>
+					<span>[{{item.shedName}}]&nbsp;</span>
 				</div>
 			</div>
 

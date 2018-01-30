@@ -15,7 +15,9 @@ public class Switch extends BasePersistable{
 	@ManyToOne
 	@JoinColumn(name = "shed_id")
 	private Shed shed;
-	private String location;
+	private Integer location;
+	@Column(name = "device_id")
+	private String deviceId;
 
 	public String getName() {
 		return name;
@@ -41,11 +43,19 @@ public class Switch extends BasePersistable{
 		this.shed = shed;
 	}
 
-	public String getLocation() {
+	public Integer getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(Integer location) {
 		this.location = location;
+	}
+
+	public String getDeviceId() {
+		return deviceId;
+	}
+
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
 	}
 }

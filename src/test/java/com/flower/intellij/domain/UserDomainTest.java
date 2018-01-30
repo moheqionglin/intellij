@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -57,6 +59,7 @@ public class UserDomainTest extends BaseTest{
 			.setParameter("name", "SwitchGroups_name").getSingleResult();
 		System.out.println(sg1.getUser().getId());
 		assertEquals(sg1.getUser().getId(), Integer.valueOf(1));
+
 //
 //		ObjectMapper jsonMapper = new ObjectMapper();
 //		try {
