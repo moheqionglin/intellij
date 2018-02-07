@@ -59,4 +59,9 @@ public class SwitchController {
 		log.info("USER : {} Create Switch Group {}", userid, req);
 		return ResponseEntity.ok(switchControllerService.createSwitchGroup(userid, req));
 	}
+	@GetMapping(path = "/switchGroup/{userid}")
+	public ResponseEntity getAllSwitchGroups(@PathVariable("userid") String userid){
+		log.info("USER : {} Get all Switch Group lists{}", userid);
+		return ResponseEntity.ok(switchControllerService.getSwitchGroups(userid));
+	}
 }

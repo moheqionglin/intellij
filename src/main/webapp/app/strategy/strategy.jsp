@@ -37,7 +37,6 @@
 		<div class="item" ng-repeat="item in items" style="border-radius: 0.9em; background-color: #fff">
 			<div class="middle aligned image"  style="padding: 5px 25px">
 				<div class="middle aligne  " style="border: solid 1px #f1f1f1; width: 60px; height: 60px; border-radius: 0.5em;  ">
-					<%--<img ng-src="{{item.image}}"  style="width: 50%; margin: auto">--%>
 					<a href="#/strategyDetail/{{item.id}}" ><img src="/app/images/strategy/strategy.png"  style="width: 70%; margin: 13% 13%; "></a>
 				</div>
 			</div>
@@ -45,11 +44,11 @@
 			<div class="middle aligned content">
 				<a href="#/strategyDetail/{{item.id}}" >{{item.name}}</a>
 					<div class="ui fitted toggle checkbox" style="float:right;" ng-click="editSwitch(item)">
-						<input type="checkbox">
+						<input type="checkbox" ng-checked="item.enable" ng-model="item.enable">
 						<label></label>
 					</div>
 				<div class="meta">
-					<span>{{item.desc}}&nbsp;&nbsp;|&nbsp;&nbsp;{{item.switchGroup.name}}</span>
+					<span>{{item.desc}}&nbsp;&nbsp;</span>
 				</div>
 			</div>
 		</div>

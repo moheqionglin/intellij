@@ -12,4 +12,45 @@
 		<modifyDataType tableName="switches" columnName="location" newDataType="int"/>
 	</changeSet>
 
+	<changeSet id="add strategy enable field" author="intellij">
+		<addColumn tableName="strategy">
+			<column name="enable" type="boolean" defaultValue="true"></column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="add strategy desc" author="intellij">
+		<addColumn tableName="strategy">
+			<column name="desc" type="varchar(512)"></column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="add strategy_sg_mapping" author="intellij">
+		<!-- 开关 和 开关组多对 多关系表 -->
+		<createTable tableName="strategy_sg_mapping">
+			<column name="sg_id" type="bigint" />
+			<column name="strategy_id" type="bigint" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="add strategy starttime" author="intellij">
+		<addColumn tableName="strategy">
+			<column name="strategy_start_At" type="timestamp"></column>
+		</addColumn>
+		<addColumn tableName="strategy">
+			<column name="continue_min" type="bigint"></column>
+		</addColumn>
+		<addColumn tableName="strategy">
+			<column name="continue_second" type="bigint"></column>
+		</addColumn>
+	</changeSet>
+	<changeSet id="alter strategy starttime" author="intellij">
+		<modifyDataType tableName="strategy" columnName="strategy_start_At" newDataType="time" />
+		<dropColumn tableName="strategy" columnName="continue_second"/>
+		<addColumn tableName="strategy">
+			<column name="repeat_gap" type="bigint"></column>
+		</addColumn>
+	</changeSet>
+	<changeSet id="modify desc column" author="intellij">
+		<renameColumn tableName="strategy" oldColumnName="desc" newColumnName="description" columnDataType="varchar(512)"/>
+	</changeSet>
 </databaseChangeLog>

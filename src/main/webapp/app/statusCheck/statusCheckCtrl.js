@@ -3,6 +3,7 @@
  */
 'use strict';
 angular.module('FStatusCheck').controller('FStatusCheck.ctrl', function ($scope, $rootScope, $interval, $cookies, $http) {
+	$rootScope.loginPage = false;
 	$scope.firstLoadPage = true;
 	$scope.hideErrorDetail = true;
 	//到这个页面100%有 userid， 否则会跳转到报错页面。

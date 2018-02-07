@@ -2,6 +2,7 @@ package com.flower.intellij.switchControl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.flower.intellij.domain.*;
+import com.flower.intellij.strategy.message.SwitchGroupMetaData;
 import com.flower.intellij.switchControl.message.*;
 import com.tuya.smart.TuyaCloudClient;
 import com.tuya.smart.model.RequestMessage;
@@ -170,5 +171,14 @@ public class SwitchControllerService {
 		sgp.setSwitchs(ss);
 		em.persist(sgp);
 		return true;
+	}
+
+	@Transactional
+	public SwitchGroupListResponse getSwitchGroups(String userid) {
+		User u = em.createQuery("SELECT u FROM com.flower.intellij.domain.User u where u.dingDingId = :userid", User.class)
+			.setParameter("userid", userid).getSingleResult();
+		SwitchGroupListResponse rsp = new SwitchGroupListResponse();
+		rsp.getSwitchGroups().addAll(u.getSwitchGroups().stream().map(sg -> new SwitchGroupMetaData( sg.getName(), sg.getId())).collect(Collectors.toList()));
+		return rsp;
 	}
 }

@@ -2,9 +2,9 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FSwitchControl').controller('FSwitchControl.shedDetail', function ($scope, switchItems, $http) {
+angular.module('FSwitchControl').controller('FSwitchControl.shedDetail', function ($scope, switchItems, $http, $rootScope) {
 	$scope.items = switchItems;
-
+	$rootScope.loginPage = false;
 	$scope.switch = function (item) {
 		var status = item.active ? 'CLOSE' : 'OPEN';
 		$http.get('../resources/switchController/switch/' + item.id + '/status/' +  status).then(function(data){

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.tuya.smart.TuyaCloudClient;
 import com.tuya.smart.model.RequestMessage;
 import com.tuya.smart.model.ResponseMessage;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class TuyaCloudTest {
 
 	private static final String ACCESS_KEY = ""; // TODO: 请联系涂鸦获取
 
+	@Ignore
 	@Test
 	public void devicDetailByDevIdTest(){
 		/*
@@ -63,7 +65,7 @@ public class TuyaCloudTest {
 		System.out.println(dpsObj.getString("1"));
 		System.out.println(dpsObj.getBoolean("7"));
 	}
-
+	@Ignore
 	@Test
 	public void devicPublicTest(){
 		TuyaCloudClient client = new TuyaCloudClient(ACCESS_ID, ACCESS_KEY, END_URI);

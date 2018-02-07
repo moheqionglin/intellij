@@ -2,7 +2,8 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope, $location, $cookies, $http) {
+angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope, $location, $cookies, $http, $rootScope) {
+	$rootScope.loginPage = false;
 	$('.ui.accordion').accordion();
 	$scope.userid = $cookies.get('userid') || '04182642161821818175';
 	$scope.sheds = [];
@@ -27,7 +28,7 @@ angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', functi
 	}
 
 	$scope.returnSwitchControl = function(){
-		$location.path('/switchControl')
+		$location.path('/switchControl');
 	}
 
 	$scope.save = function () {
@@ -41,7 +42,7 @@ angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', functi
 
 		});
 		$http.post('../resources/switchController/switchGroup/' + $scope.userid, $scope.req).then(function (data) {
-
+			$location.path('/switchControl');
 		},function(){
 
 		});

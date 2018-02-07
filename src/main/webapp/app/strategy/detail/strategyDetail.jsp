@@ -31,8 +31,8 @@
 				</div>
 			</h1>
 
-			<button class="ui right floated  green button" >保存</button>
-			<button class="ui floating grey basic button" ng-click="returnSwitchControl()">取消</button>
+			<button class="ui right floated  green button" ng-click="save()" ng-disabled="!enableSave()">保存</button>
+			<button class="ui floating grey basic button" ng-click="returnStrategyListPage()">取消</button>
 
 		</div>
 
@@ -40,65 +40,9 @@
 	<div class="ui divided items">
 		<div class="item">
 			<div class="middle aligned content">
-				<div class="header"><i class="grid layout icon"></i>选择开关组</div>
+				<div class="header"><i class="id badge icon"></i> 策略名字*</div>
 				<div class="description">
-					<p>开关组1</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn strategy-switch-group-btn">
-						修改
-						<i class="edit icon"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>开始时间</div>
-				<div class="description">
-					<p>16：00</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn strategy-time-from-btn">
-						修改
-						<i class="edit icon"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="wait icon"></i>结束时间</div>
-				<div class="description">
-					<p>16：30</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn strategy-time-to-btn">
-						修改
-						<i class="edit icon"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="repeat icon"></i> 重复</div>
-				<div class="description">
-					<p>24小时</p>
-				</div>
-				<div class="extra">
-					<button class="ui right floated primary tiny basic button edit-btn strategy-repeat-btn">
-						修改
-						<i class="edit icon"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<div class="middle aligned content">
-				<div class="header"><i class="id badge icon"></i> 策略名字</div>
-				<div class="description">
-					<p>策略1</p>
+					<p>{{strategyDetail.name}}</p>
 				</div>
 				<div class="extra">
 					<button class="ui right floated primary tiny basic button edit-btn strategy-name-btn">
@@ -110,9 +54,9 @@
 		</div>
 		<div class="item">
 			<div class="middle aligned content">
-				<div class="header"><i class="id card icon"></i> 策略描述</div>
+				<div class="header"><i class="id card icon"></i> 策略描述*</div>
 				<div class="description">
-					<p>中午十二点打开左侧遮阳板1小时</p>
+					<p>{{strategyDetail.desc}}</p>
 				</div>
 				<div class="extra">
 					<button class="ui right floated primary tiny basic button edit-btn strategy-desc-btn">
@@ -122,6 +66,64 @@
 				</div>
 			</div>
 		</div>
+		<div class="item">
+			<div class="middle aligned content">
+				<div class="header"><i class="grid layout icon"></i>选择开关组*</div>
+				<div class="description">
+					<p ng-repeat="sg in strategyDetail.switchGroups">{{sg.name}}</p>
+				</div>
+				<div class="extra">
+					<button class="ui right floated primary tiny basic button edit-btn strategy-switch-group-btn">
+						修改
+						<i class="edit icon"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="middle aligned content">
+				<div class="header"><i class="wait icon"></i>开始时间*</div>
+				<div class="description">
+					<p>{{strategyDetail.strategyStartAt}}</p>
+				</div>
+				<div class="extra">
+					<button class="ui right floated primary tiny basic button edit-btn strategy-time-from-btn">
+						修改
+						<i class="edit icon"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="middle aligned content">
+				<div class="header"><i class="wait icon"></i>持续时长(只能填写整数)*</div>
+				<div class="description">
+					<p>{{strategyDetail.continueMin}}分钟</p>
+				</div>
+				<div class="extra">
+					<button class="ui right floated primary tiny basic button edit-btn strategy-continue-to-btn">
+						修改
+						<i class="edit icon"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<%--<div class="item">--%>
+			<%--<div class="middle aligned content">--%>
+				<%--<div class="header"><i class="repeat icon"></i> 重复(重复间隔0表示，只运行一次)*</div>--%>
+				<%--<div class="description">--%>
+					<%--<p ng-if="strategyDetail.repeatGapMin !== 0">本次执行结束以后，间隔{{strategyDetail.repeatGapMin}}分钟再次执行</p>--%>
+					<%--<p ng-if="strategyDetail.repeatGapMin === 0">只执行一次</p>--%>
+				<%--</div>--%>
+				<%--<div class="extra">--%>
+					<%--<button class="ui right floated primary tiny basic button edit-btn strategy-repeat-btn">--%>
+						<%--修改--%>
+						<%--<i class="edit icon"></i>--%>
+					<%--</button>--%>
+				<%--</div>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+
 	</div>
 
 </div>
@@ -134,13 +136,13 @@
 	<div class="ui content input">
 
 		<button class="ui green button"
-				ng-repeat="switchGroup in switchGroups"
+				ng-repeat="switchGroup in allSwitchGroupd"
 				ng-class="{'basic': !switchGroup.selected}"
 				ng-click="selectSwitchGroup(switchGroup)">{{switchGroup.name}}</button>
 
 	</div>
 	<div class="actions">
-		<div class="ui button">Cancel</div>
+		<div class="ui cancel button">Cancel</div>
 		<div class="ui positive button">OK</div>
 	</div>
 </div>
@@ -150,10 +152,10 @@
 		输入策略名称
 	</div>
 	<div class="ui content input">
-		<input type="text" placeholder="策略名--改成anglar">
+		<input type="text" placeholder="策略名" ng-model="strategyDetail.name" style="width: 100%">
 	</div>
 	<div class="actions">
-		<div class="ui button">Cancel</div>
+		<div class="ui cancel button">Cancel</div>
 		<div class="ui positive button">OK</div>
 	</div>
 </div>
@@ -166,89 +168,50 @@
 	<div class="content">
 		<div class="ui form">
 			<div class="field">
-				<textarea rows="2"></textarea>
+				<textarea rows="2" ng-model="strategyDetail.desc"></textarea>
 			</div>
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button">Cancel</div>
+		<div class="ui cancel button">Cancel</div>
 		<div class="ui positive button">OK</div>
 	</div>
 </div>
 
 
-<div class="ui modal strategy-repeat-modal">
+<div class="ui modal strategy-continue-to-modal">
 	<i class="close icon"></i>
 	<div class="header">
-		重复间隔
-	</div>
-	<div class="ui content input">
-		<input type="text" placeholder="24">
-		<label>小时</label>
-	</div>
-	<div class="actions">
-		<div class="ui button">Cancel</div>
-		<div class="ui positive button">OK</div>
-	</div>
-</div>
-
-<!--delete start-->
-<div class="ui modal strategy-time-from-modal">
-	<i class="close icon"></i>
-	<div class="header">
-		开始时间(24小时格式)
+		持续时间长度(单位：分钟)
 	</div>
 	<div class="content">
 		<div class="ui form">
-				<div class="ui labeled input">
-					<div class="ui label">
-						时
-					</div>
-					<input type="text" size="1" placeholder="Amount">
-				</div>
-				<label>:</label>
-				<div class="ui labeled input" style="margin-left: 3em">
-					<div class="ui label">
-						分
-					</div>
-					<input type="text" size="1" placeholder="Amount">
-				</div>
-		</div>
-
-	</div>
-	<div class="actions">
-		<div class="ui button">Cancel</div>
-		<div class="ui positive button">OK</div>
-	</div>
-</div>
-
-
-<div class="ui modal strategy-time-to-modal">
-	<i class="close icon"></i>
-	<div class="header">
-		结束时间(24小时格式)
-	</div>
-	<div class="content">
-		<div class="ui form">
-			<div class="ui labeled input">
-				<div class="ui label">
-					时
-				</div>
-				<input type="text" size="1" placeholder="Amount">
-			</div>
-			<label>:</label>
 			<div class="ui labeled input" style="margin-left: 3em">
 				<div class="ui label">
 					分
 				</div>
-				<input type="text" size="1" placeholder="Amount">
+				<input type="text" size="1" placeholder="Amount" ng-model="strategyDetail.continueMin">
 			</div>
 		</div>
 
 	</div>
 	<div class="actions">
-		<div class="ui button">Cancel</div>
+		<div class="ui cancel button">Cancel</div>
 		<div class="ui positive button">OK</div>
 	</div>
 </div>
-<!--delete end-->
+
+<%--<div class="ui modal strategy-repeat-modal">--%>
+	<%--<i class="close icon"></i>--%>
+	<%--<div class="header">--%>
+		<%--重复间隔(重复间隔0表示，只运行一次)--%>
+	<%--</div>--%>
+	<%--<div class="ui content input">--%>
+		<%--<input type="text" placeholder="24" ng-model="strategyDetail.repeatGapMin">--%>
+		<%--<label>小时</label>--%>
+	<%--</div>--%>
+	<%--<div class="actions">--%>
+		<%--<div class="ui cancel button">Cancel</div>--%>
+		<%--<div class="ui positive button">OK</div>--%>
+	<%--</div>--%>
+<%--</div>--%>

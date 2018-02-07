@@ -2,51 +2,108 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope) {
-	$('.strategy-name-modal').modal('attach events', '.strategy-name-btn', 'show');
-	$('.strategy-desc-modal').modal('attach events', '.strategy-desc-btn', 'show');
-	$('.strategy-repeat-modal').modal('attach events', '.strategy-repeat-btn', 'show');
-	$('.strategy-switch-group-modal').modal('attach events', '.strategy-switch-group-btn', 'show')
-	$('.ui.checkbox').checkbox();
-	// $('.strategy-time-from-modal').modal('attach events', '.strategy-time-from-btn', 'show');
-	// $('.strategy-time-to-modal').modal('attach events', '.strategy-time-to-btn', 'show');
-	var fromCalendar = new datePicker();
-	fromCalendar.init({
-		'trigger': '.strategy-time-from-btn', /*按钮选择器，用于触发弹出插件*/
-		'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
-		'minDate':'1900-1-1',/*最小日期*/
-		'maxDate':'2100-12-31',/*最大日期*/
-		'onSubmit':function(){/*确认时触发事件*/
-			var theSelectData=fromCalendar.value;
-			alert(theSelectData)
-		},
-		'onClose':function(){/*取消时触发事件*/
-		}
-	});
-	var toCalendar = new datePicker();
-	toCalendar.init({
-		'trigger': '.strategy-time-to-btn', /*按钮选择器，用于触发弹出插件*/
-		'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
-		'minDate':'1900-1-1',/*最小日期*/
-		'maxDate':'2100-12-31',/*最大日期*/
-		'onSubmit':function(){/*确认时触发事件*/
-			var theSelectData=toCalendar.value;
-			alert(theSelectData)
-		},
-		'onClose':function(){/*取消时触发事件*/}
-	});
+angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope, $rootScope, $location, $http, $route, $cookies) {
 
-
-	$scope.switchGroups = [];
-	for(var i = 1; i< 20; i ++){
-		$scope.switchGroups.push({
-			id: 1,
-				name: '开关组' + i,
-			selected: false
-		});
-	}
+	$rootScope.loginPage = false;
+	var userid = $cookies.get('userid') || '04182642161821818175';
+	init();
 
 	$scope.selectSwitchGroup = function (switchGroup) {
 		switchGroup.selected = !switchGroup.selected;
+		if(switchGroup.selected){
+			$scope.strategyDetail.switchGroups.push(switchGroup);
+		}else{
+			var deleteIndex = -1;
+			for(var i = 0; i < $scope.strategyDetail.switchGroups.length; i++){
+				var sg = $scope.strategyDetail.switchGroups[i];
+				if(sg.id === switchGroup.id){
+					deleteIndex = i;
+					break;
+				}
+			}
+			$scope.strategyDetail.switchGroups.splice(deleteIndex, 1);
+		}
+
+
 	}
+
+
+	$scope.enableSave = function(){
+		return $scope.strategyDetail && $scope.strategyDetail.name && $scope.strategyDetail.switchGroups.length > 0 &&
+				$scope.strategyDetail.desc && $scope.strategyDetail.strategyStartAt &&
+				$scope.strategyDetail.continueMin && ($scope.strategyDetail.repeatGapMin >= 0);
+	}
+
+	$scope.returnStrategyListPage = function () {
+		$location.path('/strategy');
+	}
+
+	$scope.save = function () {
+		console.log('--->')
+		$http.post('../resources/strategy/save/' + userid, $scope.strategyDetail).then(function(data){
+			$location.path('/strategy');
+		}, function(){
+		});
+
+	}
+
+
+	function init(){
+		$('.strategy-name-modal').modal('attach events', '.strategy-name-btn', 'show');
+		$('.strategy-desc-modal').modal('attach events', '.strategy-desc-btn', 'show');
+		$('.strategy-repeat-modal').modal('attach events', '.strategy-repeat-btn', 'show');
+		$('.strategy-switch-group-modal').modal('attach events', '.strategy-switch-group-btn', 'show')
+		$('.ui.checkbox').checkbox();
+		$('.strategy-continue-to-modal').modal('attach events', '.strategy-continue-to-btn', 'show');
+
+
+
+		var id = $route.current.params.id
+		if(id === 'new'){
+			id = -1;
+		}
+		$http.get('../resources/strategy/detail/' + userid + '/' + id)
+			.success(function (strategy) {
+				console.log(strategy);
+				$scope.strategyDetail = strategy.strategyDetail;
+				$scope.allSwitchGroupd = strategy.switchGroups;
+				if(id === -1){
+					$scope.strategyDetail = {
+						name: "新建策略",
+						switchGroups: [],
+						desc: "新建策略描述",
+						strategyStartAt: "00:00",
+						continueMin: 1,
+						repeatGapMin: 0
+					}
+				}else{
+					_.each($scope.allSwitchGroupd, function(allSg){
+						_.each($scope.strategyDetail.switchGroups, function(sg){
+							if(allSg.id === sg.id){
+								allSg.selected = true;
+							}
+						})
+					});
+				}
+
+				var fromCalendar = new datePicker();
+				fromCalendar.init({
+					'trigger': '.strategy-time-from-btn', /*按钮选择器，用于触发弹出插件*/
+					'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+					'initTime': $scope.strategyDetail.strategyStartAt, /*格式 12：31：34*/
+					'onSubmit':function(){/*确认时触发事件*/
+						$scope.strategyDetail.strategyStartAt = fromCalendar.value;
+					},
+					'onClose':function(){/*取消时触发事件*/
+					}
+				});
+			})
+			.error(function () {
+				$location.path('/');
+			});
+
+
+
+	}
+
 });
