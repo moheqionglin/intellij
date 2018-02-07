@@ -96,7 +96,11 @@ angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope,
 					'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
 					'initTime': $scope.strategyDetail.strategyStartAt, /*格式 12：31：34*/
 					'onSubmit':function(){/*确认时触发事件*/
-						$scope.strategyDetail.strategyStartAt = fromCalendar.value + ":00";
+						$scope.$apply(function () {
+							//wrapped this within $apply
+							$scope.strategyDetail.strategyStartAt = fromCalendar.value + ":00";
+						});
+
 					},
 					'onClose':function(){/*取消时触发事件*/
 					}
