@@ -3,7 +3,8 @@
  */
 'use strict';
 angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope, $rootScope, $location, $http, $route, $cookies) {
-
+	$scope.error = false;
+	$scope.success = false;
 	$rootScope.loginPage = false;
 	var userid = $cookies.get('userid') || '04182642161821818175';
 	init();
@@ -39,16 +40,19 @@ angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope,
 	}
 
 	$scope.save = function () {
-		console.log('--->')
 		$http.post('../resources/strategy/save/' + userid, $scope.strategyDetail).then(function(data){
-			$location.path('/strategy');
+			$scope.error = false;
+			$scope.success = true;
 		}, function(){
+			$scope.error = true;
+			$scope.success = false;
 		});
 
 	}
 
 
 	function init(){
+		$('.ui.dimmer.modals.page.transition.hidden').html('');
 		$('.strategy-name-modal').modal('attach events', '.strategy-name-btn', 'show');
 		$('.strategy-desc-modal').modal('attach events', '.strategy-desc-btn', 'show');
 		$('.strategy-repeat-modal').modal('attach events', '.strategy-repeat-btn', 'show');
@@ -92,7 +96,7 @@ angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope,
 					'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
 					'initTime': $scope.strategyDetail.strategyStartAt, /*格式 12：31：34*/
 					'onSubmit':function(){/*确认时触发事件*/
-						$scope.strategyDetail.strategyStartAt = fromCalendar.value;
+						$scope.strategyDetail.strategyStartAt = fromCalendar.value + ":00";
 					},
 					'onClose':function(){/*取消时触发事件*/
 					}

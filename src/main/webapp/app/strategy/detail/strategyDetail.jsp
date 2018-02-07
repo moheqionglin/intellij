@@ -33,6 +33,8 @@
 
 			<button class="ui right floated  green button" ng-click="save()" ng-disabled="!enableSave()">保存</button>
 			<button class="ui floating grey basic button" ng-click="returnStrategyListPage()">取消</button>
+			<div class="ui red message" ng-show="error">操作失败！请检查您是否输入内容合法，或者忘记填写某个字段。</div>
+			<div class="ui green message" ng-show="success">操作成功。</div>
 
 		</div>
 

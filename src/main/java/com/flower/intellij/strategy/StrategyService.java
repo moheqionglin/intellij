@@ -75,9 +75,9 @@ public class StrategyService {
 			s.setName(req.getName());
 			s.setEnable(true);
 			s.setUser(user);
+			s.setStrategyStartAt(req.getStrategyStartAtDate());
 			s.setContinueMin(req.getContinueMin());
 			s.setDescription(req.getDesc());
-			s.setStrategyStartAt(new Date());
 			s.getSwitchGroups().addAll(sgs);
 			s.setRepeatGapMin(req.getRepeatGapMin());
 			em.persist(s);
