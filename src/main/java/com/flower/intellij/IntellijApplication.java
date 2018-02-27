@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -18,6 +20,8 @@ import javax.servlet.Filter;
 
 @SpringBootApplication
 @EnableConfigurationProperties
+@EnableScheduling
+@EnableAsync
 public class IntellijApplication extends WebMvcConfigurerAdapter {
     //setting View resolver
 	private static final String END_URI = "https://a1.tuyacn.com/api.json";// 调用中国区的API（您可换成其他可用区）
