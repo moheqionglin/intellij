@@ -9,7 +9,8 @@ angular.module('FSwitchControl').controller('FSwitchControl.ctrl', function ($sc
 			context: 'parent'
 		})
 	;
-	$scope.userid = $cookies.get('userid') || '04182642161821818175';
+	// $scope.userid = $cookies.get('userid') || '04182642161821818175';
+	$scope.userid = $cookies.get('userid');
 	$('.ui.modal.shed-modal').modal('attach events', '#context2 .select-shed-btn', 'show')
 	$('.ui.modal.switch-modal').modal('attach events', '#context2 .select-switch-btn', 'show')
 	$('.ui.basic.modal').modal('attach events', '.switch-btn', 'show')

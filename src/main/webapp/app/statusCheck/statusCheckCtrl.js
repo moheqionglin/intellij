@@ -7,7 +7,8 @@ angular.module('FStatusCheck').controller('FStatusCheck.ctrl', function ($scope,
 	$scope.firstLoadPage = true;
 	$scope.hideErrorDetail = true;
 	//到这个页面100%有 userid， 否则会跳转到报错页面。
-	$scope.userid = $cookies.get('userid') || '04182642161821818175';
+	// $scope.userid = $cookies.get('userid') || '04182642161821818175';
+	$scope.userid = $cookies.get('userid');
 	$scope.error = false;
 	$scope.toggleDetail = false;
 

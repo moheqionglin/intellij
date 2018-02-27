@@ -5,7 +5,8 @@
 angular.module('FSwitchControl').controller('FSwitchControl.switchGroup', function ($scope, $location, $cookies, $http, $rootScope) {
 	$rootScope.loginPage = false;
 	$('.ui.accordion').accordion();
-	$scope.userid = $cookies.get('userid') || '04182642161821818175';
+	// $scope.userid = $cookies.get('userid') || '04182642161821818175';
+	$scope.userid = $cookies.get('userid');
 	$scope.sheds = [];
 	$scope.totalSelected = 0;
 	$scope.req = {};

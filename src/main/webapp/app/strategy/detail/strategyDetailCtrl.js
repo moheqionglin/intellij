@@ -6,7 +6,8 @@ angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope,
 	$scope.error = false;
 	$scope.success = false;
 	$rootScope.loginPage = false;
-	var userid = $cookies.get('userid') || '04182642161821818175';
+	// var userid = $cookies.get('userid') || '04182642161821818175';
+	var userid = $cookies.get('userid');
 	init();
 
 	$scope.selectSwitchGroup = function (switchGroup) {
