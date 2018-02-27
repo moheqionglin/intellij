@@ -9,7 +9,6 @@
 </style>
 
 <div class="statusCheck-container" >
-	<div class="ui aligned center"><span>{{userid}}</span></div>
 	<div class="ui middle aligned center aligned grid">
 		<div class="column">
 			<div class="ui aligned center c100 big  p{{value}}">
