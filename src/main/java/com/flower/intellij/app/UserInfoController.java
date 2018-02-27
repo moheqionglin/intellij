@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @created 2018-01-01 7:09 PM.
  */
 @Controller
-@RequestMapping(path = "/", consumes = "application/json", produces = "application/json")
+@RequestMapping(path = "/resources", consumes = "application/json", produces = "application/json")
 public class UserInfoController {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
