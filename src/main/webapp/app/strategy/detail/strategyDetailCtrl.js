@@ -2,7 +2,7 @@
  * Created by zhouwanli on 26/08/2017.
  */
 'use strict';
-angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope, $rootScope, $location, $http, $route, $cookies) {
+angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope, $window, $rootScope, $location, $http, $route, $cookies) {
 	$scope.error = false;
 	$scope.success = false;
 	$rootScope.loginPage = false;
@@ -37,7 +37,9 @@ angular.module('FStrategy').controller('FStrategy.detailCtrl', function ($scope,
 	}
 
 	$scope.returnStrategyListPage = function () {
-		$location.path('/strategy');
+		$window.location.href = '/p/#/strategy';
+		$window.location.reload();
+		// $location.path('/strategy');
 	}
 
 	$scope.save = function () {

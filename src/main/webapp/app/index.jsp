@@ -4,17 +4,13 @@
 <head>
 	<!-- 检测浏览器 -->
 	<title>爱尚智能大棚</title>
-	<link rel="icon" type="image/png" href="/images/favicon.png"/>
 
-	<!-- build:cssLibIndex styles/external.css -->
+	<!-- build:cssLibIndex ../flower_intellij/external.css -->
 	<link href="../components/semantic-ui/dist/semantic.min.css" rel="stylesheet">
-	<!-- endbuild -->
-
 	<link href="../app/styles/circle.css" rel="stylesheet" media="screen"/>
-	<!-- build:appCss app/styles/all.css -->
-	<%--<link href="../app/styles/main.css" rel="stylesheet" media="screen"/>--%>
-
 	<!-- endbuild -->
+
+
 	<style>
 		.ui.menu.fixed{
 			width: 100% !important;
@@ -49,9 +45,8 @@
 		<div ng-view autoScroll="true"></div>
 	</div>
 
-	<!-- build:jsLibIndex lib/lib-all.js -->
+	<!-- build:jsLibIndex ../flower_intellij/lib-all.js -->
 	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.8.6/scripts/dingtalk.js"></script>
 	<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-cookies/angular-cookies.js"></script>
 	<script type="text/javascript" src="../bower_components/lodash/lodash.min.js"></script>
@@ -63,7 +58,7 @@
 
 	<!-- endbuild -->
 
-	<!-- build:appJs app/app-all.js -->
+	<!-- build:appJs ../flower_intellij/app-all.js -->
 	<script type="text/javascript" src="../app/app.js"></script>
 	<script type="text/javascript" src="../app/common/commonModule.js"></script>
 	<script type="text/javascript" src="../app/common/commonCtrl.js"></script>
@@ -84,5 +79,7 @@
 	<script type="text/javascript" src="../app/strategy/detail/strategyDetailCtrl.js"></script>
 
 	<!-- endbuild -->
+	<script type="text/javascript" src="http://g.alicdn.com/ilw/ding/0.8.6/scripts/dingtalk.js"></script>
+
 </body>
 </html>

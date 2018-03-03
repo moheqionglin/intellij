@@ -44,28 +44,10 @@ angular.module('FSLogin').controller('FSLoginControl.ctrl', function ($scope, $l
 			corpId: _config.corpId,
 			onSuccess: function (info) {
 
-				// var contextPath = 'http://106.14.133.77:8888/';
-				// var url = contextPath + 'userinfo?code=' + info.code + '&corpid=' + _config.corpId;
-				$http.get('../resources/userinfo?code=' + info.code + '&corpid=' + _config.corpId )
-					.success(function(){
-						$scope.error = false;
-						var now = new Date(),
-							exp = new Date(now.getFullYear()+1, now.getMonth(), now.getDate());
-						$cookies.put('userid', data.userid, {
-							expires: exp
-						});
-
-						$window.location.href = '/p/#/statusCheck';
-					}).error(function(){
-					$scope.error = true;
-				});
-				// $.ajax({
-				// 	url: url,
-				// 	type: 'GET',
-				// 	contentType: 'application/json;charset=utf-8',
-				// 	dataType: 'json',
-				// 	success: function (data, status, xhr) {
-                //
+				var contextPath = 'http://106.14.133.77:8888/resources/';
+				var url = contextPath + 'userinfo?code=' + info.code + '&corpid=' + _config.corpId;
+				// $http.get('../resources/userinfo?code=' + info.code + '&corpid=' + _config.corpId )
+				// 	.success(function(){
 				// 		$scope.error = false;
 				// 		var now = new Date(),
 				// 			exp = new Date(now.getFullYear()+1, now.getMonth(), now.getDate());
@@ -74,13 +56,31 @@ angular.module('FSLogin').controller('FSLoginControl.ctrl', function ($scope, $l
 				// 		});
                 //
 				// 		$window.location.href = '/p/#/statusCheck';
-				// 		return;
-				// 	},
-				// 	error: function (xhr, errorType, error) {
-				// 		$scope.error = true;
-				// 		// alert(errorType + ', ' + error);
-				// 	}
+				// 	}).error(function(){
+				// 	$scope.error = true;
 				// });
+				$.ajax({
+					url: url,
+					type: 'GET',
+					contentType: 'application/json;charset=utf-8',
+					dataType: 'json',
+					success: function (data, status, xhr) {
+
+						$scope.error = false;
+						var now = new Date(),
+							exp = new Date(now.getFullYear()+1, now.getMonth(), now.getDate());
+						$cookies.put('userid', data.userid, {
+							expires: exp
+						});
+
+						$window.location.href = '/p/#/statusCheck';
+						return;
+					},
+					error: function (xhr, errorType, error) {
+						$scope.error = true;
+						// alert(errorType + ', ' + error);
+					}
+				});
 
 
 			},

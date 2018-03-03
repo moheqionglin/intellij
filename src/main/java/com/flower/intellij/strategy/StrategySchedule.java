@@ -5,6 +5,7 @@ import com.flower.intellij.strategy.message.SwitchHandlerMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  * @created 2018-02-26 9:35 PM.
  */
 @Component
+@Profile("schedule")
 public class StrategySchedule {
 
 	@PersistenceContext
@@ -37,7 +39,7 @@ public class StrategySchedule {
 		this.currentDate = new Date();
 	}
 
-	@Scheduled(cron = "0 0/1 * * * ?")
+	@Scheduled(cron = "0 0/5 * * * ?")
 	@Transactional
 	public void checkStrategy(){
 		Date beforeDate = currentDate;
